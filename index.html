@@ -6,12 +6,9 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Weather Predictor</title>
-  
+
   <!-- Import TensorFlow.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
-  <!-- Import tfjs-vis -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
   
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -71,11 +68,11 @@
             <input type="file"  accept="image/jpeg, image/png" onchange="loadFile(event)"  name="image" name="image" id="file" style="display: none;">
             <p><label for="file" style="cursor: pointer;" class="btn btn-outline-secondary">Upload Your Image</label></p>
             <div class="preview-image">
-                <img id="output" src="assets/img/default_image.jpg" alt="Weather Image" class="img-fluid"> 
+                <img id="output" src="assets/img/img2.jpg" alt="Weather Image" class="img-fluid"> 
             </div>
-            <button id="predict-btn" type="button" onclick="predict()" class="btn btn-outline-secondary">Predict The Weather</button>
+            <button id="predict-btn" type="button" onclick="predictWeather()" class="btn btn-outline-secondary">Predict The Weather</button>
             <div class="weather"> 
-                <h4>The weather is ... </h4>
+                <h4 id="result">The weather is ... </h4>
             </div> 
         </div>
     </section>
@@ -108,11 +105,7 @@
     };
   </script>
 
-  <script>
-    function predict() {
-        console.log("ok");
-    }
-  </script>
+  <script src="assets/js/predict.js"></script> 
 
 </body>
 
