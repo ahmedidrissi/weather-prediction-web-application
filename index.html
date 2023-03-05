@@ -6,7 +6,12 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Weather Predictor</title>
-  <script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
+  
+  <!-- Import TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <!-- Import tfjs-vis -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+  
   
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -32,7 +37,7 @@
 <body>
   <main id="main">
 
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a href="index.html" class="brand navbar-brand">Weather Predictor</a>
         <button 
@@ -42,7 +47,7 @@
         data-bs-target="#offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
+        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
           <div class="offcanvas-header">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -58,17 +63,24 @@
           </div>
         </div> 
       </div>
-      <div class="navblur"></div>
     </nav><!-- End Navbar -->
 
     <!-- ======= Home Section ======= -->
     <section id="home" class="home">
-      <div class="container">
-        
-      </div>
+        <div class="weather-prediction-bg">
+            <input type="file"  accept="image/jpeg, image/png" onchange="loadFile(event)"  name="image" name="image" id="file" style="display: none;">
+            <p><label for="file" style="cursor: pointer;" class="btn btn-outline-secondary">Upload Your Image</label></p>
+            <div class="preview-image">
+                <img id="output" src="assets/img/default_image.jpg" alt="Weather Image" class="img-fluid"> 
+            </div>
+            <button id="predict-btn" type="button" onclick="predict()" class="btn btn-outline-secondary">Predict The Weather</button>
+            <div class="weather"> 
+                <h4>The weather is ... </h4>
+            </div> 
+        </div>
     </section>
 
-  </main><!-- End #main -->
+  </main><!-- End #main --> 
 
   <footer>
     <div class="copyright">
@@ -88,6 +100,19 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+    };
+  </script>
+
+  <script>
+    function predict() {
+        console.log("ok");
+    }
+  </script>
 
 </body>
 
