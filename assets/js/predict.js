@@ -39,11 +39,6 @@ function takePicture() {
     window.setTimeout(predictWeather, 1000);
 }
 
-window.addEventListener('load', async function() {
-    model = await tf.loadLayersModel('./assets/model/model.json');
-    preloader.classList.add('preloader-deactivate');
-});
-
 const classes = {
         0: 'dew',
         1: 'fogsmog',
@@ -87,3 +82,8 @@ function preprocess()
 
     return batched
 };
+
+window.addEventListener('load', async function() {
+    model = await tf.loadLayersModel('./assets/model/model.json');
+    preloader.classList.add('preloader-deactivate');
+});
