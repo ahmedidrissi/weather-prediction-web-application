@@ -1,5 +1,43 @@
 const preloader = document.querySelector('.preloader');
+
+const camera = document.querySelector('.camera');
+const webcamElement = document.getElementById('webcam');
+const canvasElement = document.getElementById('canvas');
+const webcam = new Webcam(webcamElement, 'user', canvasElement);
+
 var model;
+
+function openCamera() {
+    camera.classList.remove('camera-off');
+
+    webcam.start()
+    .then(result =>{
+        console.log("webcam started");
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};
+
+function flipCamera() {
+    webcam.flip();
+    webcam.start()
+    .then(result =>{
+        console.log("webcam started");
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+
+function takePicture() {
+    let picture = webcam.snap();
+    document.querySelector('#preview').src = picture;
+    webcam.stop();
+    camera.classList.add('camera-off');
+    result.innerHTML = "Loading ...";
+    window.setTimeout(predictWeather, 1000);
+}
 
 window.addEventListener('load', async function() {
     model = await tf.loadLayersModel('./assets/model/model.json');
