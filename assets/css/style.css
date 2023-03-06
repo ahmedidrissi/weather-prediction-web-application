@@ -279,6 +279,13 @@ section {
   border-radius: 6px;
   background-color: rgb(240, 239, 239);
 }
+#home .button-container.button-container-off{
+  display: none;
+}
+#home .button-container.button-container-on{
+  display: flex;
+  justify-content: center;
+}
 #home .camera{
   border-radius: 6px;
   margin-bottom: 20px;

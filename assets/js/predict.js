@@ -1,5 +1,7 @@
 const preloader = document.querySelector('.preloader');
 
+const button_container = document.querySelector('.button-container');
+
 const camera = document.querySelector('.camera');
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
@@ -57,11 +59,18 @@ function loadFile(event) {
     var image = document.getElementById('preview');
     image.src = URL.createObjectURL(event.target.files[0]);
     result.innerHTML = "Loading ...";
-    window.setTimeout(predictWeather, 500);
+    window.setTimeout(predictWeather, 1000);
 };
 
-async function predictWeather() {
+async function loadModel() {
+    result.innerHTML = "Preparing the predictor ...";
     model = await tf.loadLayersModel('./assets/model/model.json');
+    button_container.classList.remove('button-container-off');
+    button_container.classList.add('button-container-on');
+    result.innerHTML = "Output : sandstorm";
+}
+
+function predictWeather() {
     var result = document.getElementById('result');
     var pred = model.predict(preprocess()).dataSync();
     var index = pred.indexOf(Math.max(...pred));
@@ -86,4 +95,5 @@ function preprocess()
 
 window.addEventListener('load', function() {
     preloader.classList.add('preloader-deactivate');
+    loadModel();
 });
