@@ -8,7 +8,10 @@
   <title>Weather Predictor</title>
 
   <!-- Import TensorFlow.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+
+  <!-- For Webcam -->
+  <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
   
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -81,8 +84,19 @@
     <!-- ======= Home Section ======= -->
     <section id="home" class="home">
         <div class="weather-prediction-bg">
-            <input type="file"  accept="image/jpeg, image/png" onchange="loadFile(event)"  name="image" name="image" id="file" style="display: none;">
-            <p><label for="file" style="cursor: pointer;" class="btn btn-outline-secondary">Upload Your Image</label></p>
+            <div class="button-container d-flex justify-content-center gap-1">
+              <input type="file"  accept="image/jpeg, image/png" onchange="loadFile(event)" name="image" id="file" style="display: none;">
+              <p><label for="file" style="cursor: pointer;" class="btn btn-outline-secondary"><i class="bi bi-upload"></i> Upload Your Image</label></p>
+              <button onclick="openCamera()" class="btn btn-outline-secondary h-100"><i class="bi bi-camera"></i> Take a Picture</button>
+            </div>
+            <div class="camera camera-off">
+              <video class="bg-dark" id="webcam" autoplay playsinline width="400px" height="300px"></video>
+              <canvas id="canvas" class="d-none"></canvas>
+              <div>
+                <button onclick="takePicture()" class="btn btn-secondary mt-2"><i class="bi bi-camera-fill"></i> Capture</button>
+                <button onclick="flipCamera()" class="btn btn-secondary mt-2"><i class="bi bi-repeat"></i> Flip</button>
+              </div>
+            </div>
             <div class="preview-image">
                 <img id="preview" src="assets/img/img2.jpg" alt="Weather Image" class="img-fluid"> 
             </div>
@@ -90,15 +104,13 @@
                 <h4 id="result">Output : sandstorm</h4>
             </div> 
         </div>
+        
+        <div class="copyright">
+          &copy; 2023 <strong><span>Weather Predictor</span></strong>. All Rights Reserved
+        </div>
     </section>
 
   </main><!-- End #main --> 
-
-  <footer>
-    <div class="copyright">
-      &copy; 2023 <strong><span>Weather Predictor</span></strong>. All Rights Reserved
-    </div>
-  </footer>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
