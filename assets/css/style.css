@@ -279,8 +279,18 @@ section {
   border-radius: 6px;
   background-color: rgb(240, 239, 239);
 }
+#home .camera{
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+#home .camera.camera-off{
+  display: none;
+}
+#home video{
+  border-radius: 6px;
+}
 #home .preview-image{
-  margin: 20px auto;
+  margin: 5px auto 20px;
   height: 300px;
   max-width: 500px;
   border-radius: 6px;
@@ -288,6 +298,7 @@ section {
 }
 #home img{
   height: 100%;
+  width: 95%;
 }
 #home .weather{
   margin-top: 20px;
@@ -307,5 +318,6 @@ section {
   text-align: center;
   width: 100%;
   height: auto;
+  margin-top: 20px;
   padding: 15px 0;
 }
