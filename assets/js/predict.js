@@ -60,7 +60,8 @@ function loadFile(event) {
     window.setTimeout(predictWeather, 500);
 };
 
-function predictWeather() {
+async function predictWeather() {
+    model = await tf.loadLayersModel('./assets/model/model.json');
     var result = document.getElementById('result');
     var pred = model.predict(preprocess()).dataSync();
     var index = pred.indexOf(Math.max(...pred));
@@ -83,7 +84,6 @@ function preprocess()
     return batched
 };
 
-window.addEventListener('load', async function() {
-    model = await tf.loadLayersModel('./assets/model/model.json');
+window.addEventListener('load', function() {
     preloader.classList.add('preloader-deactivate');
 });
