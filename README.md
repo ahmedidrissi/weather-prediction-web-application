@@ -1,3 +1,3 @@
-# Weather_Predition_Website
+# WeatherPredition-Website
 
 Web server that predict the weather from images
