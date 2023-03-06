@@ -1,3 +1,11 @@
+const preloader = document.querySelector('.preloader');
+var model;
+
+window.addEventListener('load', async function() {
+    model = await tf.loadLayersModel('./assets/model/model.json');
+    preloader.classList.add('preloader-deactivate');
+});
+
 const classes = {
         0: 'dew',
         1: 'fogsmog',
@@ -11,22 +19,16 @@ const classes = {
         9: 'sandstorm',
         10: 'snow'
     };
-    
-var model;
 
 function loadFile(event) {
     var image = document.getElementById('preview');
     image.src = URL.createObjectURL(event.target.files[0]);
+    result.innerHTML = "Loading ...";
+    window.setTimeout(predictWeather, 500);
 };
 
-function loadModel() {
-    
-}
-
-async function predictWeather() {
+function predictWeather() {
     var result = document.getElementById('result');
-    result.innerHTML = "Predicting ...";    
-    model = await tf.loadLayersModel('./assets/model/model.json');
     var pred = model.predict(preprocess()).dataSync();
     var index = pred.indexOf(Math.max(...pred));
     result.innerHTML = "Output : " + classes[index];
