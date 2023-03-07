@@ -301,6 +301,8 @@ section {
 }
 #home video{
   border-radius: 6px;
+  max-width: 400px;
+  height: 300px;
 }
 #home .preview-image{
   margin: 5px auto 20px;
@@ -334,6 +336,11 @@ section {
   }
   #home .button-container label, #home .button-container button{
     font-size: 12px;
+  }
+  #home video{
+    border-radius: 6px;
+    width: 250px;
+    height: 200px;
   }
   #home h4{
     font-size: 14px;
