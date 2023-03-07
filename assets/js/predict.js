@@ -1,6 +1,7 @@
 const preloader = document.querySelector('.preloader');
 
 const button_container = document.querySelector('.button-container');
+const progress_bar = document.querySelector('#myBar');
 
 const camera = document.querySelector('.camera');
 const webcamElement = document.getElementById('webcam');
@@ -35,14 +36,16 @@ function takePicture() {
     document.querySelector('#preview').src = picture;
     webcam.stop();
     camera.classList.add('camera-off');
-    result.innerHTML = "Loading ...";
+    result.innerHTML = "";
+    progress_bar.classList.remove('bar-off');
     window.setTimeout(predictWeather, 1000);
 }
 
 function loadFile(event) {
     var image = document.getElementById('preview');
     image.src = URL.createObjectURL(event.target.files[0]);
-    result.innerHTML = "Loading ...";
+    result.innerHTML = "";
+    progress_bar.classList.remove('bar-off');
     window.setTimeout(predictWeather, 1000);
 };
 
@@ -64,6 +67,7 @@ var model;
 function predictWeather() {
     var result = document.getElementById('result');
     var pred = model.predict(preprocess()).dataSync();
+    progress_bar.classList.add('bar-off');
     var index = pred.indexOf(Math.max(...pred));
     result.innerHTML = "Output : " + classes[index];
 };
@@ -80,15 +84,17 @@ function preprocess()
     const normalized = tf.scalar(1.0).sub(resized.div(offset));
     //We add a dimension to get a batch shape 
     const batched = normalized.expandDims(0);
-
+ 
     return batched
 };
 
 window.addEventListener('load', async function() {
     preloader.classList.add('preloader-deactivate');
-    result.innerHTML = "Preparing the predictor ...";
+    result.innerHTML = "";
+    progress_bar.classList.remove('bar-off');
     model = await tf.loadLayersModel('./assets/model/model.json');
     button_container.classList.remove('button-container-off');
     button_container.classList.add('button-container-on');
+    progress_bar.classList.add('bar-off');
     result.innerHTML = "Output : sandstorm";
 });

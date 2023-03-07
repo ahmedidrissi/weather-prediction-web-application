@@ -1,6 +1,13 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -269,11 +276,10 @@ section {
 --------------------------------------------------------------*/
 #home {
   width: 100%;
-  height: 100vh;
   text-align: center;
 }
 #home .weather-prediction-bg{
-  width: 500px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 6px;
@@ -307,6 +313,9 @@ section {
   height: 100%;
   width: 95%;
 }
+#home .progress.bar-off{
+  display: none;
+}
 #home .weather{
   margin-top: 20px;
   border: 1px solid gray;
@@ -317,14 +326,30 @@ section {
   padding: 10px 0;
   margin: 0;
 }
-
+@media (max-width: 768px){
+  #home .weather-prediction-bg{
+    width: 300px;
+    margin: 0 auto;
+    padding: 5px;
+  }
+  #home .button-container label, #home .button-container button{
+    font-size: 12px;
+  }
+  #home h4{
+    font-size: 14px;
+  }
+}
 /*--------------------------------------------------------------
 # Home Section
 --------------------------------------------------------------*/
 .copyright{
   text-align: center;
-  width: 100%;
   height: auto;
   margin-top: 20px;
   padding: 15px 0;
+}
+@media (max-width: 768px){
+  .copyright{
+    font-size: 12px;
+  }
 }
