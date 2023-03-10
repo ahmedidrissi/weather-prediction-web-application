@@ -1,3 +1,5 @@
+const tf = require('@tensorflow/tfjs');
+
 const preloader = document.querySelector('.preloader');
 
 const button_container = document.querySelector('.button-container');
