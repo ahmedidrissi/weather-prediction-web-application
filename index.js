@@ -1,9 +1,7 @@
-const tf = require('@tensorflow/tfjs');
-
 const preloader = document.querySelector('.preloader');
 
 const button_container = document.querySelector('.button-container');
-const progress_bar = document.querySelector('#myBar');
+const progress_bar = document.querySelector('#myBar'); 
 
 const camera = document.querySelector('.camera');
 const webcamElement = document.getElementById('webcam');
