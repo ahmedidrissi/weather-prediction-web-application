@@ -1,13 +1,6 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-thumb {
-  background: gray;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -36,13 +29,8 @@ h6 {
 }
 
 main{
-  padding: 0 12%;
-}
-
-@media (max-width: 992px) {
-  main{
-    padding: 0 5%;
-  }
+  padding: 0;
+  margin: 0;
 }
 
 /*--------------------------------------------------------------
@@ -235,7 +223,7 @@ main{
 }
 .navbar ul li i{
   padding-right: 5px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #flexSwitchCheckDefault{
@@ -264,19 +252,12 @@ main{
 }
 
 /*--------------------------------------------------------------
-# General Sections
---------------------------------------------------------------*/
-section {
-  margin-top: 60px;
-  padding: 20px 10px;
-  border-radius: 10px;
-}
-/*--------------------------------------------------------------
 # Home Section
 --------------------------------------------------------------*/
 #home {
   width: 100%;
   text-align: center;
+  margin-top: 120px;
 }
 #home .weather-prediction-bg{
   max-width: 500px;
@@ -302,11 +283,11 @@ section {
 #home video{
   border-radius: 6px;
   max-width: 400px;
-  height: 300px;
+  height: 320px;
 }
 #home .preview-image{
   margin: 5px auto 20px;
-  height: 300px;
+  height: 320px;
   max-width: 500px;
   border-radius: 6px;
   background-color: rgb(197, 197, 197);
@@ -350,9 +331,10 @@ section {
 # Home Section
 --------------------------------------------------------------*/
 .copyright{
+  background-color: rgb(226, 226, 226);
   text-align: center;
   height: auto;
-  margin-top: 20px;
+  margin-top: 100px;
   padding: 15px 0;
 }
 @media (max-width: 768px){
