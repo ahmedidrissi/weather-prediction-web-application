@@ -96,5 +96,5 @@ window.addEventListener('load', async function() {
     button_container.classList.remove('button-container-off');
     button_container.classList.add('button-container-on');
     progress_bar.classList.add('bar-off');
-    result.innerHTML = "Output : sandstorm";
+    result.innerHTML = "Output : rain";
 });
