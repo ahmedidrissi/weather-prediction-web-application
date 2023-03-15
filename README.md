@@ -1,3 +1,3 @@
 # weather-prediction-website
 
-Web server that predict the weather from images
+A real time weather prediction web application based on images
